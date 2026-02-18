@@ -1,0 +1,153 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- ===================================================== -->
+    <!-- ASP.NET Core / Microsoft (10.0.3 band)               -->
+    <!-- ===================================================== -->
+    <PackageVersion Include="Microsoft.AspNetCore.Authorization" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.AspNetCore.SignalR.Common" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="10.0.3" />
+    <!-- ===================================================== -->
+    <!-- Entity Framework Core                                 -->
+    <!-- ===================================================== -->
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="10.0.3" />
+    <!-- ===================================================== -->
+    <!-- PostgreSQL                                 -->
+    <!-- ===================================================== -->
+    <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.0" />
+    <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL.Design" Version="10.0.0" />
+    <!-- ===================================================== -->
+    <!-- Microsoft.Extensions                                  -->
+    <!-- ===================================================== -->
+    <PackageVersion Include="Microsoft.Extensions.Caching.Hybrid" Version="10.2.0" />
+    <PackageVersion Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.Extensions.Options" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.3" />
+    <PackageVersion Include="Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions" Version="10.0.3" />
+    <!-- ===================================================== -->
+    <!-- Security / Identity                                   -->
+    <!-- ===================================================== -->
+    <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="8.15.0" />
+    <PackageVersion Include="Microsoft.IdentityModel.Tokens" Version="8.15.0" />
+    <PackageVersion Include="Microsoft.Extensions.Identity.Stores" Version="10.0.3" />
+    <!-- ===================================================== -->
+    <!-- System                                                -->
+    <!-- ===================================================== -->
+    <PackageVersion Include="System.Text.Json" Version="10.0.3" />
+    <PackageVersion Include="System.Configuration.ConfigurationManager" Version="9.0.9" />
+    <!-- ===================================================== -->
+    <!-- API Versioning / Swagger                              -->
+    <!-- ===================================================== -->
+    <PackageVersion Include="Asp.Versioning.Abstractions" Version="8.1.0" />
+    <PackageVersion Include="Asp.Versioning.Mvc" Version="8.1.0" />
+    <PackageVersion Include="Asp.Versioning.Mvc.ApiExplorer" Version="8.1.0" />
+    <PackageVersion Include="Swashbuckle.AspNetCore.Swagger" Version="10.1.3" />
+    <PackageVersion Include="Swashbuckle.AspNetCore.SwaggerGen" Version="10.1.3" />
+    <PackageVersion Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.1.3" />
+    <!-- ===================================================== -->
+    <!-- Health Checks (stable 9.x compatible)                 -->
+    <!-- ===================================================== -->
+    <PackageVersion Include="AspNetCore.HealthChecks.SignalR" Version="9.0.0" />
+    <PackageVersion Include="AspNetCore.HealthChecks.Network" Version="9.0.0" />
+    <PackageVersion Include="AspNetCore.HealthChecks.Redis" Version="9.0.0" />
+    <PackageVersion Include="AspNetCore.HealthChecks.SqlServer" Version="9.0.0" />
+    <PackageVersion Include="AspNetCore.HealthChecks.System" Version="9.0.0" />
+    <PackageVersion Include="AspNetCore.HealthChecks.Uris" Version="9.0.0" />
+    <PackageVersion Include="AspNetCore.HealthChecks.UI" Version="9.0.0" />
+    <PackageVersion Include="AspNetCore.HealthChecks.UI.Core" Version="9.0.0" />
+    <PackageVersion Include="AspNetCore.HealthChecks.UI.Client" Version="9.0.0" />
+    <PackageVersion Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="9.0.0" />
+    <!-- ===================================================== -->
+    <!-- Clean Architecture / CQRS                             -->
+    <!-- ===================================================== -->
+    <PackageVersion Include="MediatR" Version="14.0.0" />
+    <PackageVersion Include="AutoMapper" Version="16.0.0" />
+    <PackageVersion Include="FluentValidation" Version="12.1.1" />
+    <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
+    <!-- ===================================================== -->
+    <!-- Resilience                                            -->
+    <!-- ===================================================== -->
+    <PackageVersion Include="Microsoft.Data.SqlClient" Version="6.1.1" />
+    <PackageVersion Include="Polly" Version="8.5.0" />
+    <PackageVersion Include="Polly.Extensions.Http" Version="3.0.0" />
+    <PackageVersion Include="AspNetCoreRateLimit" Version="5.0.0" />
+    <PackageVersion Include="KubernetesClient" Version="17.0.14" />
+    <!-- ===================================================== -->
+    <!-- Logging / Observability                               -->
+    <!-- ===================================================== -->
+    <PackageVersion Include="Serilog" Version="4.3.0" />
+    <PackageVersion Include="Serilog.AspNetCore" Version="10.0.0" />
+    <PackageVersion Include="Serilog.Extensions.Logging" Version="10.0.0" />
+    <PackageVersion Include="Serilog.Settings.Configuration" Version="10.0.0" />
+    <PackageVersion Include="Serilog.Expressions" Version="5.0.0" />
+    <PackageVersion Include="Serilog.Enrichers.Environment" Version="3.0.1" />
+    <PackageVersion Include="Serilog.Enrichers.Thread" Version="4.0.0" />
+    <PackageVersion Include="Serilog.Enrichers.Process" Version="3.0.0" />
+    <PackageVersion Include="Serilog.Enrichers.ClientInfo" Version="2.0.0" />
+    <PackageVersion Include="Serilog.Sinks.Async" Version="2.1.0" />
+    <PackageVersion Include="Serilog.Sinks.Console" Version="6.1.1" />
+    <PackageVersion Include="Serilog.Sinks.File" Version="7.0.0" />
+    <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.9.0" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.9.0" />
+    <PackageVersion Include="OpenTelemetry.Instrumentation.Http" Version="1.9.0" />
+    
+    <!-- ===================================================== -->
+    <!-- Messaging                                             -->
+    <!-- ===================================================== -->
+    <!-- RabbitMQ -->
+    <PackageVersion Include="RabbitMQ.Client" Version="7.2.0" />
+
+    <!-- MassTransit Core -->
+    <PackageVersion Include="MassTransit" Version="8.4.0" />
+    <PackageVersion Include="MassTransit.RabbitMQ" Version="8.4.0" />
+
+    <!-- EF Core Integration (Outbox/Inbox/Transactional Bus) -->
+    <PackageVersion Include="MassTransit.EntityFrameworkCore" Version="8.4.0" />
+
+    <!-- Optional but Recommended -->
+    <PackageVersion Include="MassTransit.Extensions.DependencyInjection" Version="8.4.0" />
+
+    <!-- ===================================================== -->
+    <!-- Serialization                                         -->
+    <!-- ===================================================== -->
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.4" />
+    <!-- ===================================================== -->
+    <!-- Testing                                               -->
+    <!-- ===================================================== -->
+    <PackageVersion Include="xunit" Version="2.9.2" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.0.1" />
+    <PackageVersion Include="coverlet.collector" Version="6.0.4" />
+    <PackageVersion Include="FluentAssertions" Version="8.8.0" />
+    <PackageVersion Include="NetArchTest.Rules" Version="1.3.2" />
+    <PackageVersion Include="Moq" Version="4.20.72" />
+    <PackageVersion Include="MockQueryable.Moq" Version="9.0.0" />
+    <PackageVersion Include="Respawn" Version="7.0.0" />
+    <PackageVersion Include="WireMock.Net" Version="1.6.6" />
+    <PackageVersion Include="Bogus" Version="36.1.1" />
+    <!-- ===================================================== -->
+    <!-- Analyzers                                             -->
+    <!-- ===================================================== -->
+    <PackageVersion Include="StyleCop.Analyzers" Version="1.1.118" />
+    <PackageVersion Include="SonarAnalyzer.CSharp" Version="10.18.0.131500" />
+  </ItemGroup>
+</Project>

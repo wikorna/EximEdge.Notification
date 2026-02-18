@@ -1,0 +1,6 @@
+@EximEdge.Notification.ApiHost_HostAddress = http://localhost:5156
+
+GET {{EximEdge.Notification.ApiHost_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

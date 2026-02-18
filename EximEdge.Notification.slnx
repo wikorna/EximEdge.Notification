@@ -1,0 +1,33 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/BuildingBlocks/">
+    <Project Path="src/BuildingBlocks/EximEdge.Notification.Abstractions/EximEdge.Notification.Abstractions.csproj" />
+    <Project Path="src/BuildingBlocks/EximEdge.Notification.Contracts/EximEdge.Notification.Contracts.csproj" />
+    <Project Path="src/BuildingBlocks/EximEdge.Notification.Infrastructure/EximEdge.Notification.Infrastructure.csproj" />
+    <Project Path="src/BuildingBlocks/EximEdge.Notification.ReadModel/EximEdge.Notification.ReadModel.csproj" />
+    <Project Path="src/BuildingBlocks/EximEdge.Notification.SharedKernel/EximEdge.Notification.SharedKernel.csproj" />
+  </Folder>
+  <Folder Name="/src/Host/">
+    <Project Path="src/Host/EximEdge.Notification.ApiHost/EximEdge.Notification.ApiHost.csproj" />
+    <Project Path="src/Host/EximEdge.Notification.WorkerHost/EximEdge.Notification.WorkerHost.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/" />
+  <Folder Name="/src/Modules/Email/">
+    <Project Path="src/Modules/Email/Email.Api/Email.Api.csproj" />
+    <Project Path="src/Modules/Email/Email.Application/Email.Application.csproj" />
+    <Project Path="src/Modules/Email/Email.Domain/Email.Domain.csproj" />
+    <Project Path="src/Modules/Email/Email.Infrastructure/Email.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/LineOA/">
+    <Project Path="src/Modules/LineOA/LineOA.Api/LineOA.Api.csproj" />
+    <Project Path="src/Modules/LineOA/LineOA.Application/LineOA.Application.csproj" />
+    <Project Path="src/Modules/LineOA/LineOA.Domain/LineOA.Domain.csproj" />
+    <Project Path="src/Modules/LineOA/LineOA.Infrastructure/LineOA.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Sms/">
+    <Project Path="src/Modules/Sms/Sms.Api/Sms.Api.csproj" />
+    <Project Path="src/Modules/Sms/Sms.Application/Sms.Application.csproj" />
+    <Project Path="src/Modules/Sms/Sms.Domain/Sms.Domain.csproj" />
+    <Project Path="src/Modules/Sms/Sms.Infrastructure/Sms.Infrastructure.csproj" />
+  </Folder>
+</Solution>
