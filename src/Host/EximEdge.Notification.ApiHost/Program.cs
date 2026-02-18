@@ -1,3 +1,4 @@
+using Email.Api;
 using EximEdge.Notification.ApiHost.Modules;
 using EximEdge.Notification.Infrastructure;
 using Microsoft.OpenApi;
@@ -56,6 +57,9 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapEmailEndpoints();
+
 app.MapHealthChecks("/health");
 
 await app.RunAsync();

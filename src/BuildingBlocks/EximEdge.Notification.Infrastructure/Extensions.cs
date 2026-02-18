@@ -44,7 +44,7 @@ public static class Extensions
                             h.UseSsl(ssl => ssl.ServerName = options.Connection.HostName);
                         }
                     });
-
+                    // ✅ สำคัญ: ให้ MassTransit สร้าง ReceiveEndpoints ตาม consumer ที่ register
                     rmq.ConfigureEndpoints(context);
                 });
             }

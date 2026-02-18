@@ -144,6 +144,7 @@
     <PackageVersion Include="Respawn" Version="7.0.0" />
     <PackageVersion Include="WireMock.Net" Version="1.6.6" />
     <PackageVersion Include="Bogus" Version="36.1.1" />
+    <PackageVersion Include="Testcontainers.RabbitMq" Version="4.10.0" />
     <!-- ===================================================== -->
     <!-- Analyzers                                             -->
     <!-- ===================================================== -->

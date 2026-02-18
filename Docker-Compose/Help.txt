@@ -1,0 +1,95 @@
+
+  672  curl -I http://192.168.12.117:8080/
+  673  netstat -tlnp | grep 8080
+  674  curl -I http://localhost:8080/
+  675  sudo firewall-cmd --list-all
+  676  ip addr | grep 192.168
+  677  docker ps
+  678  docker network create ane-network
+  679  docker network connect ane-network edge-nginx
+  680  docker network connect ane-network ane-web-uat
+  681  docker network connect ane-network ane-api-staging
+  682  docker exec edge-nginx curl -I http://ane-web-uat:80/
+  683  docker logs ane-web-uat --tail 30
+  684  docker exec -it ane-web-uat sh
+  685  cat /etc/nginx/nginx.conf
+  686  find /etc/nginx -type f -name "*.conf" 2>/dev/null
+  687  ls -laR /etc/nginx/
+  688  grep -r "8080" /etc/nginx/
+  689  docker exec -it ane-web-uat sh
+  690  grep -r "listen" /etc/nginx/nginx.conf
+  691  nginx -s reload
+  692  docker exec -it ane-web-uat sh
+  693  docker ps -a | grep ane-web
+  694  docker ps
+  695  docker logs -f f35c
+  671  docker ps | grep ane-web
+  672  curl -I http://192.168.12.117:8080/
+  673  netstat -tlnp | grep 8080
+  674  curl -I http://localhost:8080/
+  675  sudo firewall-cmd --list-all
+  676  ip addr | grep 192.168
+  677  docker ps
+  678  docker network create ane-network
+  679  docker network connect ane-network edge-nginx
+  680  docker network connect ane-network ane-web-uat
+  681  docker network connect ane-network ane-api-staging
+  682  docker exec edge-nginx curl -I http://ane-web-uat:80/
+  683  docker logs ane-web-uat --tail 30
+  684  docker exec -it ane-web-uat sh
+  685  cat /etc/nginx/nginx.conf
+  686  find /etc/nginx -type f -name "*.conf" 2>/dev/null
+  687  ls -laR /etc/nginx/
+  688  grep -r "8080" /etc/nginx/
+  689  docker exec -it ane-web-uat sh
+  690  grep -r "listen" /etc/nginx/nginx.conf
+  691  nginx -s reload
+  692  docker exec -it ane-web-uat sh
+  693  docker ps -a | grep ane-web
+  694  docker ps
+  695  docker logs -f f35c
+
+  === Built to .tar file ===
+
+docker load -i notification-api-staging.tar
+
+nginx -s reload
+docker exec -it ane-web-uat sh
+
+
+Docker pull 
+===========
+mcr.microsoft.com/dotnet/aspnet:10.0
+mcr.microsoft.com/dotnet/sdk:10.0
+nginx:alpine
+rabbitmq:3.12-management-alpine
+redis:7.2-alpine
+rediscommander/redis-commander:latest
+
+portainer/agent:2.21.5
+sonarqube:latest
+
+
+
+docker stop redis-service
+docker rm redis-service
+
+docker stop rabbitmq-service
+docker rm rabbitmq-service
+
+docker stop postgres-service
+docker rm postgres-service
+
+วิธีเข้าใช้งาน
+=========
+RabbitMQ UI: http://localhost:15672 (admin/password123)
+
+Redis Commander UI: http://localhost:8081
+
+
+---
+dotnet ef migrations add initialCreate -p .\src\Modules\Email\Email.Infrastructure\Email.Infrastructure.csproj -s .\src\Host\EximEdge.Notification.ApiHost\EximEdge.Notification.ApiHost.csproj
+
+dotnet ef database update -p .\src\Modules\Email\Email.Infrastructure\Email.Infrastructure.csproj -s .\src\Host\EximEdge.Notification.ApiHost\EximEdge.Notification.ApiHost.csproj
+
+dotnet ef migrations list -p .\src\Modules\Email\Email.Infrastructure\Email.Infrastructure.csproj -s .\src\Host\EximEdge.Notification.ApiHost\EximEdge.Notification.ApiHost.csproj

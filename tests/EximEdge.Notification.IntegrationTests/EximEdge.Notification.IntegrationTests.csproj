@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <NoWarn>$(NoWarn);CA1707;CA1001</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="Testcontainers.RabbitMq" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+    <PackageReference Include="FluentAssertions" />
+    <PackageReference Include="MassTransit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Host\EximEdge.Notification.ApiHost\EximEdge.Notification.ApiHost.csproj" />
+    <ProjectReference Include="..\..\src\BuildingBlocks\EximEdge.Notification.Contracts\EximEdge.Notification.Contracts.csproj" />
+    <ProjectReference Include="..\..\src\BuildingBlocks\EximEdge.Notification.Infrastructure\EximEdge.Notification.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\Modules\Email\Email.Infrastructure\Email.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

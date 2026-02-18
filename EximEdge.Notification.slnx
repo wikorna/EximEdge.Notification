@@ -30,4 +30,7 @@
     <Project Path="src/Modules/Sms/Sms.Domain/Sms.Domain.csproj" />
     <Project Path="src/Modules/Sms/Sms.Infrastructure/Sms.Infrastructure.csproj" />
   </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/EximEdge.Notification.IntegrationTests/EximEdge.Notification.IntegrationTests.csproj" />
+  </Folder>
 </Solution>

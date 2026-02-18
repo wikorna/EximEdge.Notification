@@ -1,18 +1,4 @@
 services:
-  rabbitmq:
-    image: rabbitmq:3.13-management
-    container_name: rabbitmq-service
-    hostname: rabbitmq-dev
-    ports:
-      - "5672:5672"
-      - "15672:15672"
-    environment:
-      RABBITMQ_DEFAULT_USER: admin
-      RABBITMQ_DEFAULT_PASS: password123
-    volumes:
-      - rabbitmq_data:/var/lib/rabbitmq
-    restart: unless-stopped
-
   redis:
     image: redis:7.4-alpine
     container_name: redis-service
@@ -35,5 +21,4 @@ services:
     restart: unless-stopped
 
 volumes:
-  rabbitmq_data:
   redis_data:

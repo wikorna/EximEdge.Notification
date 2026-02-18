@@ -1,0 +1,55 @@
+###############################################################################
+# EximEdge.Notification – RabbitMQ integration‑testing stack
+# Usage:
+#   docker compose -f docker-compose.testing.yml up -d
+#   docker compose -f docker-compose.testing.yml down -v
+###############################################################################
+services:
+
+  rabbitmq:
+    image: rabbitmq:3.12-management-alpine
+    container_name: eximedge-rabbitmq-test
+    hostname: rabbitmq-dev
+    ports:
+      - "5672:5672"     # AMQP
+      - "15672:15672"   # Management UI
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: password123
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+  redis:
+    image: redis:7-alpine
+    container_name: eximedge-redis-test
+    ports:
+      - "6379:6379"
+    command: redis-server --requirepass password123
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "password123", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: eximedge-postgres-test
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: wikorn
+      POSTGRES_PASSWORD: "P@ssw0rd"
+      POSTGRES_DB: FactoryDB
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U wikorn -d FactoryDB"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  rabbitmq_data:
