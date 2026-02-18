@@ -218,18 +218,24 @@ public sealed class ConsumerTests : IClassFixture<RabbitMqFixture>, IAsyncLifeti
     }
 
     [Fact]
-    public void ConsumerDefinition_Has_Correct_Endpoint_Name()
+    public void EmailQueueOptions_Has_Correct_Default_SendQueue()
     {
-        IConsumerDefinition<Email.Infrastructure.Consumers.SendEmailConsumer> def =
-            new Email.Infrastructure.Consumers.SendEmailConsumerDefinition();
-        def.GetEndpointName(DefaultEndpointNameFormatter.Instance).Should().Be("email-send");
+        var options = new Email.Infrastructure.Messaging.EmailQueueOptions();
+        options.SendQueue.Should().Be("email-queue");
     }
 
     [Fact]
-    public void ConsumerDefinition_Has_Concurrency_Limit()
+    public void EmailQueueOptions_Has_Correct_Default_FaultQueue()
     {
-        var def = new Email.Infrastructure.Consumers.SendEmailConsumerDefinition();
-        def.ConcurrentMessageLimit.Should().Be(16);
+        var options = new Email.Infrastructure.Messaging.EmailQueueOptions();
+        options.FaultQueue.Should().Be("email-faults");
+    }
+
+    [Fact]
+    public void EmailQueueOptions_Has_Correct_Default_ResendQueue()
+    {
+        var options = new Email.Infrastructure.Messaging.EmailQueueOptions();
+        options.ResendQueue.Should().Be("email-resend-requests");
     }
 }
 
@@ -245,10 +251,11 @@ public sealed class DlqTests : IClassFixture<RabbitMqFixture>
     public void MassTransit_Uses_Error_Queue_Convention()
     {
         // MassTransit automatically routes faulted messages to <endpoint>_error.
-        // For our consumer this means "email-send_error".
+        // For our consumer this means "email-queue_error".
         // This is a design verification — runtime DLQ is tested in ConsumerFaultTests.
-        var expectedDlq = "email-send_error";
-        expectedDlq.Should().NotBeNullOrEmpty();
+        var options = new Email.Infrastructure.Messaging.EmailQueueOptions();
+        var expectedDlq = $"{options.SendQueue}_error";
+        expectedDlq.Should().Be("email-queue_error");
     }
 }
 

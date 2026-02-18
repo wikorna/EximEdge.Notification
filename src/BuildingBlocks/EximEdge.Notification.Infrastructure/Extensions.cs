@@ -6,20 +6,33 @@ using MassTransit;
 using Microsoft.Extensions.Caching.Hybrid;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
 
 namespace EximEdge.Notification.Infrastructure;
 
 public static class Extensions
 {
+    private static readonly Action<ILogger, string, int, string, string, Exception?> LogRabbitMqConfiguring =
+        LoggerMessage.Define<string, int, string, string>(
+            LogLevel.Information,
+            new EventId(1, nameof(LogRabbitMqConfiguring)),
+            "Configuring MassTransit RabbitMQ — Host={Host}, Port={Port}, VHost={VHost}, User={User}");
+
     /// <summary>
     /// Registers MassTransit with RabbitMQ (or in-memory when disabled) and the shared <see cref="IEventBus"/>.
-    /// Call once per host. Pass <paramref name="configureBus"/> to add module consumers in the WorkerHost.
+    /// Call once per host.
+    /// <list type="bullet">
+    ///   <item><paramref name="configureBus"/> — register module consumers (e.g. <c>cfg.AddEmailConsumers()</c>).</item>
+    ///   <item><paramref name="configureEndpoints"/> — explicit receive-endpoint mapping per module.
+    ///         When provided, replaces the default <c>ConfigureEndpoints(context)</c> auto-discovery.</item>
+    /// </list>
     /// </summary>
     public static IServiceCollection AddRabbitMqMessaging(
         this IServiceCollection services,
         IConfiguration configuration,
-        Action<IBusRegistrationConfigurator>? configureBus = null)
+        Action<IBusRegistrationConfigurator>? configureBus = null,
+        Action<IBusRegistrationContext, IBusFactoryConfigurator>? configureEndpoints = null)
     {
         var section = configuration.GetSection(RabbitMqOptions.SectionName);
         services.Configure<RabbitMqOptions>(section);
@@ -34,6 +47,17 @@ public static class Extensions
             {
                 cfg.UsingRabbitMq((context, rmq) =>
                 {
+                    var loggerFactory = context.GetRequiredService<ILoggerFactory>();
+                    var logger = loggerFactory.CreateLogger("EximEdge.Notification.Infrastructure.Messaging");
+
+                    LogRabbitMqConfiguring(
+                        logger,
+                        options.Connection.HostName,
+                        options.Connection.Port,
+                        options.Connection.VirtualHost,
+                        options.Connection.UserName,
+                        null);
+
                     rmq.Host(options.Connection.HostName, (ushort)options.Connection.Port, options.Connection.VirtualHost, h =>
                     {
                         h.Username(options.Connection.UserName);
@@ -44,13 +68,30 @@ public static class Extensions
                             h.UseSsl(ssl => ssl.ServerName = options.Connection.HostName);
                         }
                     });
-                    // ✅ สำคัญ: ให้ MassTransit สร้าง ReceiveEndpoints ตาม consumer ที่ register
-                    rmq.ConfigureEndpoints(context);
+
+                    if (configureEndpoints is not null)
+                    {
+                        configureEndpoints(context, rmq);
+                    }
+                    else
+                    {
+                        rmq.ConfigureEndpoints(context);
+                    }
                 });
             }
             else
             {
-                cfg.UsingInMemory((context, mem) => mem.ConfigureEndpoints(context));
+                cfg.UsingInMemory((context, mem) =>
+                {
+                    if (configureEndpoints is not null)
+                    {
+                        configureEndpoints(context, mem);
+                    }
+                    else
+                    {
+                        mem.ConfigureEndpoints(context);
+                    }
+                });
             }
         });
 
